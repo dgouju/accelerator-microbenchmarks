@@ -5,7 +5,7 @@
 
 
 
-CONFIG_NAMES='all_to_all_3d_1024 all_to_all_2d_1024 all_to_all_1d_1024'
+CONFIG_NAMES='all_to_all_3d_512 all_to_all_2d_512 all_to_all_1d_512'
 
 for CONFIG in $CONFIG_NAMES
 do
