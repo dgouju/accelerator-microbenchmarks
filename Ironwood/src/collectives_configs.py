@@ -15,7 +15,16 @@ def main(args):
     
     config = {}
     config['benchmarks'] = [{}]
-    config['benchmarks'][0]['benchmark_name'] = collective.replace("_1d","").replace("_2d","").replace("_3d","")
+    if "all_to_all" in collective:
+        config['benchmarks'][0]['benchmark_name'] = "all_to_all"
+    elif "all_gather" in collective:
+        config['benchmarks'][0]['benchmark_name'] = "all_gather"
+    elif "all_reduce" in collective:
+        config['benchmarks'][0]['benchmark_name'] = "psum"
+    elif "reduce_scatter" in collective:
+        config['benchmarks'][0]['benchmark_name'] = "psum_scatter"
+    else exit(1)
+        
     config['benchmarks'][0]['benchmark_sweep_params'] = []
     
     params = {}
