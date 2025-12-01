@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Run command: sh ./Ironwood/scripts/run_ici_microbenchmark.sh
+# Run command: sh ./Ironwood/scripts/run_ici_microbenchmark.sh 4x4x4
 
 
 
@@ -9,8 +9,9 @@ CONFIG_NAMES='reduce_scatter_1d reduce_scatter_2d all_gather_3d all_reduce_3d al
 
 for CONFIG in $CONFIG_NAMES
 do
+
   # Construct the full config file path
-  CONFIG_FILE="Ironwood/configs/collectives/${CONFIG}.yaml"
+  CONFIG_FILE=`python Ironwood/src/collectives_configs.py --topology=$1 --collective=${CONFIG} --output_path=../microbenchmarks`
   
   echo "--- Starting benchmark for ${CONFIG} ---"
   
