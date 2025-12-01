@@ -14,6 +14,7 @@ do
   CONFIG_FILE=`python Ironwood/src/collectives_configs.py --topology=$1 --collective=${CONFIG} --output_path=../microbenchmarks`
 
   cat $CONFIG_FILE
+  sleep 6000000000
   
   echo "--- Starting benchmark for ${CONFIG} ---"
   
