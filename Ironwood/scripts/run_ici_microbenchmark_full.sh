@@ -12,6 +12,8 @@ do
 
   # Construct the full config file path
   CONFIG_FILE=`python Ironwood/src/collectives_configs.py --topology=$1 --collective=${CONFIG} --output_path=../microbenchmarks`
+
+  cat $CONFIG_FILE
   
   echo "--- Starting benchmark for ${CONFIG} ---"
   
