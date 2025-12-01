@@ -84,7 +84,7 @@ def main(args):
     config['benchmarks'][0]['trace_dir'] = output_path+"/"+collective
     config['benchmarks'][0]['csv_path'] = output_path+"/"+collective
     config['benchmarks'][0]['xlml_metrics_dir'] = output_path+"/"+collective
-    config['benchmarks'][0]['xlml_metrics_dir'] = output_path+"/"+collective+"/hlo_graphs"
+    config['benchmarks'][0]['xla_dump_dir'] = output_path+"/"+collective+"/hlo_graphs"
 
     Path(output_path).mkdir(parents=True, exist_ok=True)
     config_file = output_path+"/"+collective+".yaml"
