@@ -23,7 +23,8 @@ def main(args):
         config['benchmarks'][0]['benchmark_name'] = "psum"
     elif "reduce_scatter" in collective:
         config['benchmarks'][0]['benchmark_name'] = "psum_scatter"
-    else exit(1)
+    else:
+        exit(1)
         
     config['benchmarks'][0]['benchmark_sweep_params'] = []
     
