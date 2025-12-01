@@ -81,10 +81,10 @@ def main(args):
             params['sharding_strategy'] = str(a)+"x"+str(b)+"x"+str(c*2)
         config['benchmarks'][0]['benchmark_sweep_params'].append(params)
 
-    config['trace_dir'] = output_path+"/"+collective
-    config['csv_path'] = output_path+"/"+collective
-    config['xlml_metrics_dir'] = output_path+"/"+collective
-    config['xlml_metrics_dir'] = output_path+"/"+collective+"/hlo_graphs"
+    config['benchmarks'][0]['trace_dir'] = output_path+"/"+collective
+    config['benchmarks'][0]['csv_path'] = output_path+"/"+collective
+    config['benchmarks'][0]['xlml_metrics_dir'] = output_path+"/"+collective
+    config['benchmarks'][0]['xlml_metrics_dir'] = output_path+"/"+collective+"/hlo_graphs"
 
     Path(output_path).mkdir(parents=True, exist_ok=True)
     config_file = output_path+"/"+collective+".yaml"
