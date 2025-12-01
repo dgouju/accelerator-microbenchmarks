@@ -23,3 +23,9 @@ do
   
   echo "--- Finished benchmark for ${CONFIG} ---"
 done
+
+if [ "$JOB_COMPLETION_INDEX" -eq "0" ]; then
+  TIMESTAMP = $(date +%y-%m-%d_%H-%M-%S)
+  mkdir -p /results/${TIMESTAMP}/
+  cp -r ../microbenchmarks/* /results/${TIMESTAMP}/
+fi
