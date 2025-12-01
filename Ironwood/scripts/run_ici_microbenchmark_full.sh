@@ -4,7 +4,7 @@
 
 
 
-
+TIMESTAMP=$(date +%y-%m-%d_%H-%M-%S)
 CONFIG_NAMES='reduce_scatter_1d reduce_scatter_2d all_gather_3d all_reduce_3d all_to_all_3d all_gather_2d all_reduce_2d all_to_all_2d all_gather_1d all_reduce_1d all_to_all_1d'
 
 for CONFIG in $CONFIG_NAMES
@@ -24,8 +24,8 @@ do
   echo "--- Finished benchmark for ${CONFIG} ---"
 done
 
-if [ "$JOB_COMPLETION_INDEX" -eq "0" ]; then
-  TIMESTAMP = $(date +%y-%m-%d_%H-%M-%S)
+# If /results is mounted (through GCSFuse for example), copy the results from pod 0 to it
+if [ "$JOB_COMPLETION_INDEX" -eq "0" ] && [ -d "/results" ]; then
   mkdir -p /results/${TIMESTAMP}/
   cp -r ../microbenchmarks/* /results/${TIMESTAMP}/
 fi
