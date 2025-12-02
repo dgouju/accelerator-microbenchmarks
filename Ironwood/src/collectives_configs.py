@@ -1,4 +1,4 @@
-import yaml, json
+import yaml
 import argparse
 from pathlib import Path
 
