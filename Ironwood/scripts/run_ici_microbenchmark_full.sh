@@ -33,6 +33,6 @@ done
 # If /results is mounted (through GCSFuse for example), copy the results from pod 0 to it
 if [ "${JOB_COMPLETION_INDEX}" -eq "0" ] && [ -n "${BUCKET}" ]; then
   echo "--- Copying results to ${BUCKET}/${TOPOLOGY}/${TIMESTAMP}/ ---"
-  gcloud storage cp -r ../microbenchmarks/* ${BUCKET}/${TOPOLOGY}/${TIMESTAMP}/
+  gcloud storage cp -r ../microbenchmarks/* ${BUCKET}/${TOPOLOGY}/${TIMESTAMP}/ 2>/dev/null
   echo "--- Copy finished ---"
 fi
