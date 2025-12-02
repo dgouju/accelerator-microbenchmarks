@@ -48,7 +48,7 @@ def main(args):
     if "all_to_all" in collective:
         if params['op_dimension'] == 1:            
             params['mesh_shape'] = str(a)+"x"+str(b)+"x"+str(c*2)
-            params['sharding_strategy'] = "1x"+str(b)+"x" # or 1xbx1?
+            params['sharding_strategy'] = "1x"+str(b)+"x1" # or 1xbx1?
         elif params['op_dimension'] == 2:
             params['mesh_shape'] = str(a)+"x"+str(b*c*2)
             params['sharding_strategy'] = "1x"+str(b*c*2)
@@ -72,7 +72,7 @@ def main(args):
         # Non Parallel Replica Groups
         if params['op_dimension'] == 1:     
             params['mesh_shape'] = str(a)+"x"+str(b)+"x"+str(c*2)
-            params['sharding_strategy'] = "1x"+str(b)+"x" # or 1xbx1?
+            params['sharding_strategy'] = "1x"+str(b)+"x1" # or 1xbx1?
         elif params['op_dimension'] == 2:
             params['mesh_shape'] = str(a)+"x"+str(b*c*2)
             params['sharding_strategy'] = "1x"+str(b*c*2)
