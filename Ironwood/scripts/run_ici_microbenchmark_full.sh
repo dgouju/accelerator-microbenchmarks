@@ -26,6 +26,8 @@ done
 
 # If /results is mounted (through GCSFuse for example), copy the results from pod 0 to it
 if [ "$JOB_COMPLETION_INDEX" -eq "0" ] && [ -d "/results" ]; then
+  echo "--- Copying results to /results/ ---"
   mkdir -p /results/${TIMESTAMP}/
   cp -r ../microbenchmarks/* /results/${TIMESTAMP}/
+  echo "--- Copy finished ---"
 fi
