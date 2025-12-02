@@ -3,7 +3,7 @@
 # Run command: sh ./Ironwood/scripts/run_ici_microbenchmark.sh 4x4x4
 
 
-
+TOPOLOGY=$1
 TIMESTAMP=$(date +%y-%m-%d_%H-%M-%S)
 CONFIG_NAMES='reduce_scatter_1d reduce_scatter_2d all_gather_3d all_reduce_3d all_to_all_3d all_gather_2d all_reduce_2d all_to_all_2d all_gather_1d all_reduce_1d all_to_all_1d'
 
@@ -11,7 +11,7 @@ for CONFIG in $CONFIG_NAMES
 do
 
   # Construct the full config file path
-  CONFIG_FILE=`python Ironwood/src/collectives_configs.py --topology=$1 --collective=${CONFIG} --output_path=../microbenchmarks`
+  CONFIG_FILE=`python Ironwood/src/collectives_configs.py --topology=${TOPOLOGY} --collective=${CONFIG} --output_path=../microbenchmarks`
 
   
   echo "--- Starting benchmark for ${CONFIG} ---"
@@ -27,7 +27,7 @@ done
 # If /results is mounted (through GCSFuse for example), copy the results from pod 0 to it
 if [ "$JOB_COMPLETION_INDEX" -eq "0" ] && [ -d "/results" ]; then
   echo "--- Copying results to /results/ ---"
-  mkdir -p /results/${TIMESTAMP}/
-  cp -r ../microbenchmarks/* /results/${TIMESTAMP}/
+  mkdir -p /results/${TOPOLOGY}/${TIMESTAMP}/
+  cp -r ../microbenchmarks/* /results/${TOPOLOGY}/${TIMESTAMP}/
   echo "--- Copy finished ---"
 fi
