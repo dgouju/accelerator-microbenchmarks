@@ -59,15 +59,15 @@ def main(args):
     else:
         # Parallel Replica Groups
         if params['op_dimension'] == 1:            
-            params['mesh_shape'] = str(a*4)+"x"+str(b)+"x"+str(c/2)
+            params['mesh_shape'] = str(a*4)+"x"+str(b)+"x"+str(int(c/2))
             params['sharding_strategy'] = "1x"+str(b)+"x1"
         elif params['op_dimension'] == 2:
-            params['mesh_shape'] = str(a)+"x"+str(b*4)+"x"+str(c/2)
+            params['mesh_shape'] = str(a)+"x"+str(b*4)+"x"+str(int(c/2))
             params['sharding_strategy'] = "1x"+str(b*c)+"x1"
         else:
             params['mesh_shape'] = str(a*b*c)+"x2"
             params['sharding_strategy'] = str(a*b*c)+"x1"         
-        config['benchmarks'][0]['benchmark_sweep_params'].append(params)
+        config['benchmarks'][0]['benchmark_sweep_params'].append(params.copy())
 
         # Non Parallel Replica Groups
         if params['op_dimension'] == 1:     
